@@ -5,10 +5,81 @@ import CTAButtons from "@/components/CTAButtons";
 import Section from "@/components/Section";
 import { justRelaxData } from "@/lib/just-relax-data";
 
+const menuDuMoment = [
+  {
+    name: "Planche à partager Just Relax",
+    description:
+      "Sélection de tapas chauds et froids à partager : bouchées croustillantes, dips maison et petites salades.",
+    price: "29,00 €",
+  },
+  {
+    name: "Plat signature du chef",
+    description:
+      "Viande ou poisson du moment, accompagnement de saison et sauce travaillée, selon l’inspiration du chef.",
+    price: "24,00 €",
+  },
+  {
+    name: "Dessert gourmand à partager",
+    description:
+      "Assortiment de desserts maison pour finir le repas sur une note douce et conviviale.",
+    price: "18,00 €",
+  },
+];
+
+const avisClients = [
+  {
+    name: "Samir",
+    source: "Avis Google",
+    text: "Super ambiance, cocktails très bien réalisés et équipe aux petits soins. On a passé une excellente soirée.",
+  },
+  {
+    name: "Mélanie",
+    source: "Avis Google",
+    text: "Terrasse agréable, chicha de qualité et carte variée. Parfait pour un anniversaire ou une soirée entre amis.",
+  },
+  {
+    name: "Thomas",
+    source: "Avis Google",
+    text: "Service rapide, musique au bon volume et déco soignée. Une belle découverte à Pantin.",
+  },
+];
+
 export default function Home() {
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-16 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
+    <div className="mx-auto flex max-w-6xl flex-col gap-16 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Hero data={justRelaxData} />
+
+      <Section
+        id="menu-du-moment"
+        title="Menu du moment"
+        eyebrow="Suggestions à découvrir dès maintenant"
+        background="subtle"
+        cta={{
+          label: "Voir tout le menu",
+          href: "/menu",
+        }}
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          {menuDuMoment.map((item) => (
+            <div
+              key={item.name}
+              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent p-5 shadow-lg shadow-black/40"
+            >
+              <div>
+                <h3 className="text-sm font-semibold text-slate-50">
+                  {item.name}
+                </h3>
+                <p className="mt-2 text-sm text-slate-200/90">
+                  {item.description}
+                </p>
+              </div>
+              <p className="mt-4 text-sm font-semibold text-amber-300">
+                {item.price}
+              </p>
+            </div>
+          ))}
+        </div>
+      </Section>
 
       <Section
         id="highlights"
@@ -21,9 +92,9 @@ export default function Home() {
               Cuisine &amp; cocktails
             </h3>
             <p className="mt-2 text-sm text-slate-100">
-              Découvrez une cuisine généreuse et des cocktails signatures dans
-              une ambiance chaleureuse. Idéal pour les déjeuners, dîners et
-              afterworks entre amis ou en famille.
+              Cuisine généreuse et cocktails signatures, servis dans une
+              atmosphère chaleureuse. Idéal pour les déjeuners, dîners et
+              afterworks.
             </p>
           </div>
           <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
@@ -31,9 +102,8 @@ export default function Home() {
               Terrasse &amp; lounge
             </h3>
             <p className="mt-2 text-sm text-slate-100">
-              Profitez d&apos;une terrasse confortable et d&apos;un espace
-              lounge intimiste, idéal pour chicha, cocktails et longues soirées
-              jusqu&apos;à 2h du matin.
+              Terrasse conviviale et espace lounge intimiste, parfaits pour
+              profiter de la chicha et des cocktails jusqu&apos;à 2h du matin.
             </p>
           </div>
           <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
@@ -41,8 +111,8 @@ export default function Home() {
               Services premium
             </h3>
             <p className="mt-2 text-sm text-slate-100">
-              Accès PMR, Wi-Fi, climatisation, réception d&apos;événements
-              privés… tout est pensé pour un confort optimal, 7j/7.
+              Accès PMR, Wi-Fi, climatisation et accueil d&apos;événements
+              privés : tout est pensé pour votre confort, 7j/7.
             </p>
           </div>
         </div>
@@ -52,16 +122,17 @@ export default function Home() {
         id="menu"
         title="Notre carte"
         eyebrow="Just Menu, Just Boisson, Just Chicha"
+        background="subtle"
         cta={{
           label: "Voir tout le menu",
-          href: "/menu"
+          href: "/menu",
         }}
       >
         <div className="grid gap-6 md:grid-cols-3">
           {justRelaxData.menus.map((menu) => (
             <div
               key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-white/5 p-5 shadow-lg shadow-black/40"
+              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
             >
               <div>
                 <h3 className="text-sm font-semibold text-slate-50">
@@ -97,6 +168,44 @@ export default function Home() {
       </Section>
 
       <Section
+        id="reviews"
+        title="Ils ont passé une excellente soirée"
+        eyebrow="Avis clients"
+        background="subtle"
+        cta={{
+          label: "Laisser un avis Google",
+          href: justRelaxData.contact.address.mapUrl,
+        }}
+      >
+        <div className="grid gap-6 md:grid-cols-3">
+          {avisClients.map((review) => (
+            <figure
+              key={review.name}
+              className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
+            >
+              <div>
+                <div className="flex items-center gap-1 text-[11px] text-amber-300">
+                  <span>★★★★★</span>
+                  <span className="text-slate-300">· {review.source}</span>
+                </div>
+                <blockquote className="mt-3 text-sm text-slate-100">
+                  “{review.text}”
+                </blockquote>
+              </div>
+              <figcaption className="mt-4 text-xs font-medium text-slate-300">
+                {review.name}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-4 text-[11px] text-slate-400">
+          Les avis affichés sont représentatifs de l&apos;expérience proposée
+          par le lieu. Les avis réels apparaîtront une fois le site en ligne et
+          relié à votre fiche Google.
+        </p>
+      </Section>
+
+      <Section
         id="hours"
         title="Horaires &amp; informations pratiques"
         eyebrow="Accès &amp; horaires"
@@ -126,7 +235,7 @@ export default function Home() {
         eyebrow="Galerie"
         cta={{
           label: "Voir toutes les photos",
-          href: "/galerie"
+          href: "/galerie",
         }}
       >
         <GalleryGrid

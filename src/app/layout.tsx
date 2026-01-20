@@ -61,13 +61,69 @@ export default function RootLayout({
 
   const mapHref = justRelaxData.contact.address.mapUrl || "#";
 
+  const hasWhatsapp =
+    !!justRelaxData.contact.whatsapp &&
+    justRelaxData.contact.whatsapp.trim().length > 0;
+
+  const whatsappHref = hasWhatsapp
+    ? `https://wa.me/${justRelaxData.contact.whatsapp.replace(/\D/g, "")}`
+    : undefined;
+
+  const reservationHref = hasWhatsapp ? whatsappHref || "#" : phoneHref;
+  const reservationLabel = hasWhatsapp
+    ? "Réserver sur WhatsApp"
+    : "Réserver par téléphone";
+
+  const openingHoursForSchema = justRelaxData.openingHours
+    .map((range) => {
+      const text = range.days.toLowerCase();
+      let prefix = "Mo-Su";
+
+      if (text.includes("lundi") && text.includes("vendredi")) {
+        prefix = "Mo-Fr";
+      } else if (text.includes("samedi") && text.includes("dimanche")) {
+        prefix = "Sa-Su";
+      }
+
+      const slot = range.slots[0];
+      if (!slot) {
+        return undefined;
+      }
+
+      return `${prefix} ${slot.from}-${slot.to}`;
+    })
+    .filter((v): v is string => Boolean(v));
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    name: justRelaxData.name,
+    description: justRelaxData.description,
+    url: SITE_URL,
+    telephone: justRelaxData.contact.phoneMain,
+    image: justRelaxData.heroImage || undefined,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: justRelaxData.contact.address.line1,
+      postalCode: justRelaxData.contact.address.postalCode,
+      addressLocality: justRelaxData.contact.address.city,
+      addressCountry: justRelaxData.contact.address.country,
+    },
+    openingHours: openingHoursForSchema,
+  };
+
   return (
     <html lang="fr">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-slate-950 text-slate-50`}
       >
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <div className="min-h-screen flex flex-col bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-          <header className="sticky top-0 z-30 border-b border-white/10 bg-black/40 backdrop-blur">
+          <header className="sticky top-0 z-30 border-b border-white/10 bg-black/60/90 backdrop-blur-xl">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
               <Link href="/" className="flex items-baseline gap-2">
                 <span className="text-base font-semibold tracking-tight uppercase text-amber-400 sm:text-lg">
@@ -77,7 +133,7 @@ export default function RootLayout({
                   {justRelaxData.tagline}
                 </span>
               </Link>
-              <nav className="flex items-center gap-4 text-xs font-medium sm:text-sm">
+              <nav className="flex items-center gap-3 text-xs font-medium sm:gap-5 sm:text-sm">
                 <Link
                   href="/menu"
                   className="text-slate-200 transition-colors hover:text-amber-300"
@@ -102,18 +158,30 @@ export default function RootLayout({
                 >
                   Contact
                 </Link>
-                <a
-                  href={phoneHref}
-                  className="rounded-full bg-amber-400 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:px-4 sm:text-sm"
-                >
-                  Appeler
-                </a>
+                <div className="flex items-center gap-2">
+                  <a
+                    href={reservationHref}
+                    target={hasWhatsapp ? "_blank" : undefined}
+                    rel={hasWhatsapp ? "noreferrer" : undefined}
+                    className="hidden rounded-full bg-amber-400 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:inline-flex sm:px-4 sm:text-sm"
+                  >
+                    {reservationLabel}
+                  </a>
+                  <a
+                    href={phoneHref}
+                    className="inline-flex rounded-full border border-white/30 px-3 py-1.5 text-[11px] font-semibold text-slate-100 shadow-sm transition hover:border-amber-300/80 hover:text-amber-200 sm:px-4 sm:text-xs"
+                  >
+                    Appeler
+                  </a>
+                </div>
               </nav>
             </div>
           </header>
-          <main className="flex-1">{children}</main>
-          <footer className="border-t border-white/10 bg-black/60">
-            <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
+          <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
+            {children}
+          </main>
+          <footer className="border-t border-white/10 bg-black/70">
+            <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-8 sm:flex-row sm:justify-between sm:px-6">
               <div>
                 <p className="text-sm font-semibold text-slate-100">
                   {justRelaxData.name}
@@ -152,6 +220,22 @@ export default function RootLayout({
                     </a>
                   )}
                 </div>
+                {justRelaxData.openingHours.length > 0 && (
+                  <div className="mt-4 text-xs text-slate-300">
+                    <p className="font-semibold text-slate-100">Horaires</p>
+                    {justRelaxData.openingHours.slice(0, 2).map((range) => (
+                      <p key={range.days}>
+                        <span className="font-medium text-slate-50">
+                          {range.days}
+                        </span>
+                        {" · "}
+                        {range.slots
+                          .map((slot) => `${slot.from}–${slot.to}`)
+                          .join(", ")}
+                      </p>
+                    ))}
+                  </div>
+                )}
               </div>
               <div className="flex flex-col gap-2 text-xs text-slate-400 sm:text-right">
                 <p>
@@ -165,6 +249,14 @@ export default function RootLayout({
                     {justRelaxData.legal.registrationNumber}
                   </p>
                 )}
+                <div className="flex flex-wrap gap-3 text-xs text-slate-400 sm:justify-end">
+                  <Link
+                    href="/mentions-legales"
+                    className="underline-offset-2 hover:underline"
+                  >
+                    Mentions légales
+                  </Link>
+                </div>
                 <p className="text-[11px] text-slate-500">
                   Site vitrine recréé sur mesure avec Next.js, TypeScript &amp;
                   Tailwind CSS.

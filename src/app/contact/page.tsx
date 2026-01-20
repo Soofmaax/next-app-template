@@ -12,16 +12,26 @@ export default function ContactPage() {
     : "#";
 
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
+    <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section title="Contact" eyebrow="Nous écrire ou réserver">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
-          <div className="space-y-4 text-sm text-slate-100/90">
-            <p>
-              Une question, une réservation, un événement privé à organiser ?
-              Contactez{" "}
-              <span className="font-semibold">{justRelaxData.name}</span> par
-              téléphone, e-mail ou via le formulaire ci-contre.
-            </p>
+          <div className="space-y-5 text-sm text-slate-100/90">
+            <div>
+              <p>
+                Une question, une réservation, un événement privé à organiser ?
+                Contactez{" "}
+                <span className="font-semibold">{justRelaxData.name}</span> par
+                téléphone, e-mail ou via le formulaire ci-contre.
+              </p>
+              {justRelaxData.contact.phoneMain && (
+                <a
+                  href={phoneHref}
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-5 py-2 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:w-auto"
+                >
+                  Appeler maintenant
+                </a>
+              )}
+            </div>
             <div className="space-y-2 text-sm">
               {justRelaxData.contact.phoneMain && (
                 <p>
@@ -55,9 +65,9 @@ export default function ContactPage() {
               Formulaire de contact
             </h2>
             <p className="mt-1 text-[11px] text-slate-400">
-              Ce formulaire est purement visuel (pas d&apos;envoi configuré). À
-              connecter à votre solution d&apos;envoi (Formspree, API maison,
-              etc.).
+              Ce formulaire est actuellement présenté à titre d&apos;exemple.
+              Il pourra être connecté à votre solution d&apos;envoi (Formspree,
+              API maison, etc.) lors de la mise en production.
             </p>
             <form className="mt-4 space-y-3 text-sm">
               <div>
@@ -114,7 +124,7 @@ export default function ContactPage() {
                 type="button"
                 className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
               >
-                Envoyer (à connecter)
+                Envoyer (démonstration)
               </button>
             </form>
           </div>

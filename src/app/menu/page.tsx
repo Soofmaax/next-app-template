@@ -1,20 +1,98 @@
 import Section from "@/components/Section";
-import MenuCategory from "@/components/MenuCategory";
 import CTAButtons from "@/components/CTAButtons";
+import MenuItemCard from "@/components/MenuItemCard";
 import { justRelaxData } from "@/lib/just-relax-data";
 
+const digitalMenu = [
+  {
+    id: "entrees-demo",
+    name: "Entrées",
+    items: [
+      {
+        name: "Carpaccio de bœuf mariné",
+        description:
+          "Fines tranches de bœuf, parmesan, roquette et huile d’olive citronnée.",
+        price: "13,00 €",
+      },
+      {
+        name: "Burrata crémeuse & tomates",
+        description:
+          "Burrata, tomates confites, basilic frais et réduction balsamique.",
+        price: "12,00 €",
+      },
+      {
+        name: "Assiette de tapas Just Relax",
+        description:
+          "Sélection de tapas chauds et froids à partager à plusieurs.",
+        price: "15,00 €",
+      },
+    ],
+  },
+  {
+    id: "plats-demo",
+    name: "Plats",
+    items: [
+      {
+        name: "Burger gourmet Just Relax",
+        description:
+          "Pain brioché, steak haché façon bouchère, fromage fondant et frites maison.",
+        price: "21,00 €",
+      },
+      {
+        name: "Pavé de saumon grillé",
+        description:
+          "Légumes de saison rôtis, sauce légère aux agrumes et herbes fraîches.",
+        price: "23,00 €",
+      },
+      {
+        name: "Plat du chef",
+        description:
+          "Suggestion du moment selon le marché et l’inspiration du chef.",
+        price: "24,00 €",
+      },
+    ],
+  },
+  {
+    id: "desserts-demo",
+    name: "Desserts",
+    items: [
+      {
+        name: "Tiramisu maison",
+        description: "Crème mascarpone légère, café corsé et biscuit imbibé.",
+        price: "9,00 €",
+      },
+      {
+        name: "Fondant au chocolat",
+        description:
+          "Cœur coulant, glace vanille et éclats de noisettes caramélisées.",
+        price: "10,00 €",
+      },
+      {
+        name: "Assortiment de desserts",
+        description:
+          "Sélection de plusieurs desserts à partager pour finir le repas en douceur.",
+        price: "14,00 €",
+      },
+    ],
+  },
+];
+
 export default function MenuPage() {
+  const mainPdf =
+    justRelaxData.menus.find((menu) => menu.id === "just-menu") ||
+    justRelaxData.menus[0];
+
   return (
-    <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
+    <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section
-        title="Notre carte"
+        title="Nos cartes"
         eyebrow="Just Menu · Just Boisson · Just Chicha"
       >
         <p className="max-w-2xl text-sm text-slate-200/90">
-          Retrouvez ici une vue détaillée de la carte. Les liens PDF vous
-          permettent de consulter les menus officiels, et vous pouvez, si vous
-          le souhaitez, saisir vos plats un par un pour une expérience 100 %
-          digitale.
+          Carte des plats, des boissons et des chichas : découvrez l&apos;univers
+          Just Relax. Les cartes PDF vous permettent de consulter le détail
+          complet, tandis que la carte digitale ci-dessous offre une lecture
+          confortable sur mobile.
         </p>
         <div className="mt-6 grid gap-6 md:grid-cols-3">
           {justRelaxData.menus.map((menu) => (
@@ -40,12 +118,9 @@ export default function MenuPage() {
                     rel="noreferrer"
                     className="inline-flex items-center rounded-full bg-amber-400 px-4 py-2 font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
                   >
-                    Ouvrir le PDF
+                    Consulter le PDF
                   </a>
                 )}
-                <span className="inline-flex items-center rounded-full border border-white/25 px-3 py-1.5 text-[11px] text-slate-200/90">
-                  Utilise la structure JSON pour saisir les plats
-                </span>
               </div>
             </div>
           ))}
@@ -53,50 +128,49 @@ export default function MenuPage() {
       </Section>
 
       <Section
-        id="menus-detail"
-        title="Exemple de structure détaillée"
-        eyebrow="À adapter avec vos propres plats"
+        id="carte-digitale"
+        title="Carte digitale (exemple)"
+        eyebrow="Idéale pour une consultation sur mobile"
         background="subtle"
+        cta={
+          mainPdf?.pdfUrl
+            ? {
+                label: "Télécharger le PDF",
+                href: mainPdf.pdfUrl,
+              }
+            : undefined
+        }
       >
-        <p className="text-xs text-slate-300">
-          La section ci-dessous illustre comment vos catégories et plats peuvent
-          être affichés lorsque vous remplissez{" "}
-          <code>data/just-relax.json</code>. Les éléments marqués{" "}
-          <span className="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-amber-200">
-            À compléter
-          </span>{" "}
-          sont des placeholders à remplacer.
-        </p>
-        <div className="mt-6 space-y-8">
-          {justRelaxData.menus
-            .filter((menu) => menu.categories.length > 0)
-            .map((menu) => (
-              <section key={menu.id} className="space-y-4">
-                <h2 className="text-sm font-semibold text-slate-50">
-                  {menu.name}
-                </h2>
-                <div className="space-y-6">
-                  {menu.categories.map((category) => (
-                    <MenuCategory key={category.id} category={category} />
-                  ))}
-                </div>
-              </section>
-            ))}
-          {justRelaxData.menus.every((m) => m.categories.length === 0) && (
-            <p className="text-xs text-slate-400">
-              Pour voir un exemple de rendu détaillé, vous pouvez compléter la
-              section{" "}
-              <code>menus[].categories[].items</code> dans{" "}
-              <code>data/just-relax.json</code>.
-            </p>
-          )}
+        <div className="grid gap-8 md:grid-cols-3">
+          {digitalMenu.map((category) => (
+            <section key={category.id} className="space-y-4">
+              <div>
+                <h3 className="text-sm font-semibold text-slate-50">
+                  {category.name}
+                </h3>
+              </div>
+              <div className="space-y-3">
+                {category.items.map((item) => (
+                  <MenuItemCard
+                    key={`${category.id}-${item.name}`}
+                    item={item}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
+        <p className="mt-5 text-[11px] text-slate-400">
+          La carte digitale présentée ici est un exemple de mise en page.
+          Chaque plat pourra être ajusté pour refléter précisément votre
+          cuisine, vos prix et vos formules.
+        </p>
       </Section>
 
       <Section
         id="reserve"
         title="Réserver une table"
-        eyebrow="Booking"
+        eyebrow="Réservation"
         background="subtle"
       >
         <div className="grid gap-6 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-center">
@@ -107,7 +181,7 @@ export default function MenuPage() {
               accueille dans un cadre cosy avec terrasse et espace lounge.
             </p>
             <p>
-              Réservation par téléphone recommandée pour les groupes et les
+              Réservation recommandée en particulier pour les groupes et les
               soirées de week-end.
             </p>
           </div>
