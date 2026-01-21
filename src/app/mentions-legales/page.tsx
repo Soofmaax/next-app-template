@@ -85,9 +85,10 @@ export default function MentionsLegalesPage() {
                 Hébergement
               </h2>
               <p className="text-slate-300">
-                Le présent site de démonstration pourra être hébergé chez un
-                prestataire à définir lors de la mise en production (par
-                exemple&nbsp;: Vercel, OVH, Scaleway…).
+                Ce site est une version de démonstration destinée à présenter le
+                futur projet au client. L&apos;hébergeur définitif (par exemple :
+                Vercel, OVH, Scaleway…) sera choisi et validé avec le client lors
+                de la mise en production.
               </p>
             </div>
           </div>

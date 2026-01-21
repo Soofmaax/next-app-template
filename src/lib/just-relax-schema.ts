@@ -12,6 +12,16 @@ export interface Contact {
   whatsapp?: string;
   email: string;
   emailAlt?: string;
+  /**
+   * Lien direct vers la page d'avis Google (éventuellement spécifique à l'établissement).
+   * Si non renseigné, le site utilisera l'URL Google Maps comme fallback.
+   */
+  googleReviewUrl?: string;
+  /**
+   * URL de réservation en ligne (TheFork, Eatbu, outil interne, etc.).
+   * Si renseigné, peut être utilisée à la place du téléphone.
+   */
+  bookingUrl?: string;
   address: Address;
 }
 

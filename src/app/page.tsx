@@ -29,17 +29,17 @@ const menuDuMoment = [
 const avisClients = [
   {
     name: "Samir",
-    source: "Avis Google",
+    source: "Exemple d'avis Google",
     text: "Super ambiance, cocktails très bien réalisés et équipe aux petits soins. On a passé une excellente soirée.",
   },
   {
     name: "Mélanie",
-    source: "Avis Google",
+    source: "Exemple d'avis Google",
     text: "Terrasse agréable, chicha de qualité et carte variée. Parfait pour un anniversaire ou une soirée entre amis.",
   },
   {
     name: "Thomas",
-    source: "Avis Google",
+    source: "Exemple d'avis Google",
     text: "Service rapide, musique au bon volume et déco soignée. Une belle découverte à Pantin.",
   },
 ];
@@ -48,6 +48,10 @@ export default function Home() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-16 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Hero data={justRelaxData} />
+
+      <div className="rounded-full border border-amber-300/25 bg-gradient-to-r from-amber-400/20 via-amber-300/10 to-transparent px-4 py-2 text-center text-[11px] text-amber-100 shadow-sm shadow-black/40">
+        Événements privés, anniversaires &amp; afterworks sur demande. Contactez-nous pour privatiser tout ou partie du lieu.
+      </div>
 
       <Section
         id="menu-du-moment"
@@ -170,11 +174,13 @@ export default function Home() {
       <Section
         id="reviews"
         title="Ils ont passé une excellente soirée"
-        eyebrow="Avis clients"
+        eyebrow="Avis clients – exemple de rendu"
         background="subtle"
         cta={{
           label: "Laisser un avis Google",
-          href: justRelaxData.contact.address.mapUrl,
+          href:
+            justRelaxData.contact.googleReviewUrl ||
+            justRelaxData.contact.address.mapUrl,
         }}
       >
         <div className="grid gap-6 md:grid-cols-3">
@@ -199,9 +205,9 @@ export default function Home() {
           ))}
         </div>
         <p className="mt-4 text-[11px] text-slate-400">
-          Les avis affichés sont représentatifs de l&apos;expérience proposée
-          par le lieu. Les avis réels apparaîtront une fois le site en ligne et
-          relié à votre fiche Google.
+          Les avis présentés ci-dessus sont fournis à titre d&apos;exemple de
+          mise en forme. Les avis réels apparaîtront une fois le site en ligne
+          et relié à votre fiche Google.
         </p>
       </Section>
 

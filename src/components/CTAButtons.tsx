@@ -25,14 +25,32 @@ export default function CTAButtons({
   const hasWhatsapp =
     !!data.contact.whatsapp && data.contact.whatsapp.trim().length > 0;
 
+  const hasBookingUrl =
+    !!data.contact.bookingUrl &&
+    data.contact.bookingUrl.trim().length > 0;
+
   const whatsappHref = hasWhatsapp
     ? `https://wa.me/${data.contact.whatsapp.replace(/\D/g, "")}`
     : undefined;
 
-  const reservationHref = hasWhatsapp ? whatsappHref || "#" : phoneHref;
-  const reservationLabel = hasWhatsapp
-    ? "Réserver sur WhatsApp"
-    : "Réserver par téléphone";
+  const bookingHref = hasBookingUrl ? data.contact.bookingUrl : undefined;
+
+  let reservationHref = phoneHref;
+  let reservationLabel = "Réserver par téléphone";
+  let reservationTarget: "_blank" | undefined;
+  let reservationRel: string | undefined;
+
+  if (hasWhatsapp && whatsappHref) {
+    reservationHref = whatsappHref;
+    reservationLabel = "Réserver sur WhatsApp";
+    reservationTarget = "_blank";
+    reservationRel = "noreferrer";
+  } else if (hasBookingUrl && bookingHref) {
+    reservationHref = bookingHref;
+    reservationLabel = "Réserver en ligne";
+    reservationTarget = "_blank";
+    reservationRel = "noreferrer";
+  }
 
   const baseClass =
     "inline-flex items-center justify-center rounded-full text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
@@ -53,8 +71,8 @@ export default function CTAButtons({
       <div className={layoutClass}>
         <a
           href={reservationHref}
-          target={hasWhatsapp ? "_blank" : undefined}
-          rel={hasWhatsapp ? "noreferrer" : undefined}
+          target={reservationTarget}
+          rel={reservationRel}
           className={`${baseClass} ${primaryClass} text-sm sm:text-base px-6 py-2.5`}
         >
           {reservationLabel}
@@ -73,16 +91,13 @@ export default function CTAButtons({
     <div className={layoutClass}>
       <a
         href={reservationHref}
-        target={hasWhatsapp ? "_blank" : undefined}
-        rel={hasWhatsapp ? "noreferrer" : undefined}
+        target={reservationTarget}
+        rel={reservationRel}
         className={`${baseClass} ${primaryClass}`}
       >
         {reservationLabel}
       </a>
-      <a
-        href={phoneHref}
-        className={`${baseClass} ${secondaryClass}`}
-      >
+      <a href={phoneHref} className={`${baseClass} ${secondaryClass}`}>
         Appeler
       </a>
       <a
@@ -93,10 +108,7 @@ export default function CTAButtons({
       >
         Itinéraire
       </a>
-      <a
-        href="/menu"
-        className={`${baseClass} ${secondaryClass}`}
-      >
+      <a href="/menu" className={`${baseClass} ${secondaryClass}`}>
         Voir le menu
       </a>
     </div>

@@ -11,10 +11,75 @@ import type {
 
 const SOURCE_URL = "https://just-relax.eatbu.com/?lang=fr";
 const OUTPUT_PATH = path.join(process.cwd(), "data", "just-relax.json");
+const SNAPSHOT_PATH = path.join(
+  process.cwd(),
+  "data",
+  "source-just-relax.html"
+);
 
 function log(step: string, detail?: string) {
   // Simple, readable logs for CLI usage
   console.log(`[scraper] ${step}${detail ? `: ${detail}` : ""}`);
+}
+
+async function fetchWithTimeout(
+  url: string,
+  timeoutMs: number,
+  init?: RequestInit
+): Promise<Response> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  try {
+    const response = await fetch(url, {
+      ...init,
+      signal: controller.signal,
+    });
+    return response;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function fetchHtml(): Promise<string> {
+  const maxAttempts = 3;
+  let lastError: unknown;
+
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    try {
+      log("HTTP", `Tentative ${attempt}/${maxAttempts}`);
+      const response = await fetchWithTimeout(SOURCE_URL, 15000, {
+        headers: {
+          "User-Agent":
+            "JustRelaxScraper/1.0 (+https://just-relax.eatbu.com; contact: infos.justrelax@gmail.com)",
+          Accept: "text/html,application/xhtml+xml",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(
+          `HTTP ${response.status} while fetching ${SOURCE_URL}`
+        );
+      }
+
+      const html = await response.text();
+      return html;
+    } catch (error) {
+      lastError = error;
+      const message =
+        error instanceof Error ? error.message : String(error);
+      log("HTTP", `Erreur tentative ${attempt}: ${message}`);
+      if (attempt < maxAttempts) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, 1000 * attempt)
+        );
+      }
+    }
+  }
+
+  throw lastError instanceof Error
+    ? lastError
+    : new Error("Échec du téléchargement après plusieurs tentatives.");
 }
 
 function normaliseText(text: string): string {
@@ -270,13 +335,12 @@ function extractMenus($: cheerio.CheerioAPI): Menu[] {
 
 async function scrape(): Promise<JustRelaxData> {
   log("Fetching", SOURCE_URL);
-  const response = await fetch(SOURCE_URL);
+  const html = await fetchHtml();
 
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status} while fetching ${SOURCE_URL}`);
-  }
+  await fs.mkdir(path.dirname(SNAPSHOT_PATH), { recursive: true });
+  await fs.writeFile(SNAPSHOT_PATH, html, "utf-8");
+  log("Snapshot", `HTML sauvegardé dans ${SNAPSHOT_PATH}`);
 
-  const html = await response.text();
   const $ = cheerio.load(html);
 
   const titleText = normaliseText($("title").first().text()) || "JUST RELAX – Restaurant & Lounge";

@@ -129,7 +129,7 @@ export default function MenuPage() {
 
       <Section
         id="carte-digitale"
-        title="Carte digitale (exemple)"
+        title="Carte digitale (aperçu)"
         eyebrow="Idéale pour une consultation sur mobile"
         background="subtle"
         cta={
@@ -161,9 +161,9 @@ export default function MenuPage() {
           ))}
         </div>
         <p className="mt-5 text-[11px] text-slate-400">
-          La carte digitale présentée ici est un exemple de mise en page.
-          Chaque plat pourra être ajusté pour refléter précisément votre
-          cuisine, vos prix et vos formules.
+          Cette carte digitale est un aperçu de présentation. La carte complète
+          reste disponible en PDF et pourra être mise à jour à votre demande
+          pour refléter précisément vos plats, vos prix et vos formules.
         </p>
       </Section>
 
