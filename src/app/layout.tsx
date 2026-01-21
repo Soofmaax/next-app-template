@@ -84,9 +84,21 @@ export default function RootLayout({
     })
     .filter((v): v is string => Boolean(v));
 
-  const jsonLd = {
+  const socialLinks = Object.values(justRelaxData.social).filter(
+    (value): value is string => Boolean(value && value.trim().length > 0)
+  );
+
+  const menuUrls = [
+    `${SITE_URL}/menu`,
+    ...justRelaxData.menus
+      .filter((menu) => !!menu.pdfUrl)
+      .map((menu) => menu.pdfUrl as string),
+  ];
+
+  const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Restaurant",
+    "@id": `${SITE_URL}/#restaurant`,
     name: justRelaxData.name,
     description: justRelaxData.description,
     url: SITE_URL,
@@ -100,7 +112,30 @@ export default function RootLayout({
       addressCountry: justRelaxData.contact.address.country,
     },
     openingHours: openingHoursForSchema,
+    priceRange: "€€",
+    servesCuisine: [
+      "Cuisine variée",
+      "Burgers",
+      "Tapas",
+    ],
+    acceptsReservations: true,
+    areaServed: {
+      "@type": "City",
+      name: justRelaxData.contact.address.city,
+    },
+    sameAs: socialLinks.length > 0 ? socialLinks : undefined,
+    hasMenu: menuUrls,
   };
+
+  const { latitude, longitude } = justRelaxData.contact.address;
+
+  if (latitude && longitude) {
+    (jsonLd as Record<string, unknown>).geo = {
+      "@type": "GeoCoordinates",
+      latitude,
+      longitude,
+    };
+  }
 
   return (
     <html lang="fr">
@@ -123,7 +158,10 @@ export default function RootLayout({
                   {justRelaxData.tagline}
                 </span>
               </Link>
-              <nav className="flex items-center gap-3 text-xs font-medium sm:gap-5 sm:text-sm">
+              <nav
+                aria-label="Navigation principale"
+                className="flex items-center gap-3 text-xs font-medium sm:gap-5 sm:text-sm"
+              >
                 <Link
                   href="/menu"
                   className="text-slate-200 transition-colors hover:text-amber-300"

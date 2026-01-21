@@ -23,8 +23,9 @@ export default function Hero({ data }: HeroProps) {
             <span className="text-amber-300">{data.tagline}</span>
           </h1>
           <p className="max-w-xl text-pretty text-sm text-slate-200/90 sm:text-base">
-            Atmosphère lounge, cocktails signatures, terrasse conviviale et
-            chicha premium. Un lieu pensé pour prolonger vos soirées à Pantin.
+            Atmosphère lounge, cocktails signatures, terrasse privée et chicha
+            premium au cœur de Pantin (93500). Un lieu pensé pour prolonger vos
+            soirées dans l&apos;Est parisien.
           </p>
           <div className="flex flex-wrap gap-3">
             <CTAButtons data={data} context="hero" />

@@ -4,6 +4,12 @@ export interface Address {
   city: string;
   country: string;
   mapUrl: string;
+  /**
+   * Coordonnées GPS optionnelles pour un référencement local enrichi (schema.org).
+   * À renseigner uniquement si elles sont connues avec précision.
+   */
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface Contact {
