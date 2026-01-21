@@ -1,4 +1,5 @@
 import type { JustRelaxData } from "@/lib/just-relax-schema";
+import { getReservationInfo } from "@/lib/reservation";
 
 interface CTAButtonsProps {
   data: JustRelaxData;
@@ -22,35 +23,7 @@ export default function CTAButtons({
 
   const mapHref = data.contact.address.mapUrl || "#";
 
-  const hasWhatsapp =
-    !!data.contact.whatsapp && data.contact.whatsapp.trim().length > 0;
-
-  const hasBookingUrl =
-    !!data.contact.bookingUrl &&
-    data.contact.bookingUrl.trim().length > 0;
-
-  const whatsappHref = hasWhatsapp
-    ? `https://wa.me/${data.contact.whatsapp.replace(/\D/g, "")}`
-    : undefined;
-
-  const bookingHref = hasBookingUrl ? data.contact.bookingUrl : undefined;
-
-  let reservationHref = phoneHref;
-  let reservationLabel = "Réserver par téléphone";
-  let reservationTarget: "_blank" | undefined;
-  let reservationRel: string | undefined;
-
-  if (hasWhatsapp && whatsappHref) {
-    reservationHref = whatsappHref;
-    reservationLabel = "Réserver sur WhatsApp";
-    reservationTarget = "_blank";
-    reservationRel = "noreferrer";
-  } else if (hasBookingUrl && bookingHref) {
-    reservationHref = bookingHref;
-    reservationLabel = "Réserver en ligne";
-    reservationTarget = "_blank";
-    reservationRel = "noreferrer";
-  }
+  const reservation = getReservationInfo(data.contact);
 
   const baseClass =
     "inline-flex items-center justify-center rounded-full text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
@@ -70,12 +43,12 @@ export default function CTAButtons({
     return (
       <div className={layoutClass}>
         <a
-          href={reservationHref}
-          target={reservationTarget}
-          rel={reservationRel}
+          href={reservation.href}
+          target={reservation.target}
+          rel={reservation.rel}
           className={`${baseClass} ${primaryClass} text-sm sm:text-base px-6 py-2.5`}
         >
-          {reservationLabel}
+          {reservation.label}
         </a>
         <a
           href={phoneHref}
@@ -90,12 +63,12 @@ export default function CTAButtons({
   return (
     <div className={layoutClass}>
       <a
-        href={reservationHref}
-        target={reservationTarget}
-        rel={reservationRel}
+        href={reservation.href}
+        target={reservation.target}
+        rel={reservation.rel}
         className={`${baseClass} ${primaryClass}`}
       >
-        {reservationLabel}
+        {reservation.label}
       </a>
       <a href={phoneHref} className={`${baseClass} ${secondaryClass}`}>
         Appeler

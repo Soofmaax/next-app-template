@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { SITE_URL, defaultLocale } from "@/lib/seo";
+import { getReservationInfo } from "@/lib/reservation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,18 +62,7 @@ export default function RootLayout({
 
   const mapHref = justRelaxData.contact.address.mapUrl || "#";
 
-  const hasWhatsapp =
-    !!justRelaxData.contact.whatsapp &&
-    justRelaxData.contact.whatsapp.trim().length > 0;
-
-  const whatsappHref = hasWhatsapp
-    ? `https://wa.me/${justRelaxData.contact.whatsapp.replace(/\D/g, "")}`
-    : undefined;
-
-  const reservationHref = hasWhatsapp ? whatsappHref || "#" : phoneHref;
-  const reservationLabel = hasWhatsapp
-    ? "Réserver sur WhatsApp"
-    : "Réserver par téléphone";
+  const reservation = getReservationInfo(justRelaxData.contact);
 
   const openingHoursForSchema = justRelaxData.openingHours
     .map((range) => {
@@ -160,12 +150,12 @@ export default function RootLayout({
                 </Link>
                 <div className="flex items-center gap-2">
                   <a
-                    href={reservationHref}
-                    target={hasWhatsapp ? "_blank" : undefined}
-                    rel={hasWhatsapp ? "noreferrer" : undefined}
+                    href={reservation.href}
+                    target={reservation.target}
+                    rel={reservation.rel}
                     className="hidden rounded-full bg-amber-400 px-3 py-1.5 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:inline-flex sm:px-4 sm:text-sm"
                   >
-                    {reservationLabel}
+                    {reservation.label}
                   </a>
                   <a
                     href={phoneHref}

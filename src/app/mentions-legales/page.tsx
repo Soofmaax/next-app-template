@@ -1,5 +1,9 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { pageSeo } from "@/lib/page-seo";
+
+export const metadata: Metadata = pageSeo.mentionsLegales;
 
 export default function MentionsLegalesPage() {
   const legal = justRelaxData.legal;

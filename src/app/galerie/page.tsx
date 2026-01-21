@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import GalleryGrid from "@/components/GalleryGrid";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { pageSeo } from "@/lib/page-seo";
+
+export const metadata: Metadata = pageSeo.galerie;
 
 export default function GaleriePage() {
   return (

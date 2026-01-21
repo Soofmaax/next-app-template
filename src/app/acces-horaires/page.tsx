@@ -1,8 +1,12 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import OpeningHours from "@/components/OpeningHours";
 import MapEmbed from "@/components/MapEmbed";
 import CTAButtons from "@/components/CTAButtons";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { pageSeo } from "@/lib/page-seo";
+
+export const metadata: Metadata = pageSeo.accesHoraires;
 
 export default function AccesHorairesPage() {
   const mapUrl = justRelaxData.contact.address.mapUrl;

@@ -4,45 +4,10 @@ import GalleryGrid from "@/components/GalleryGrid";
 import CTAButtons from "@/components/CTAButtons";
 import Section from "@/components/Section";
 import { justRelaxData } from "@/lib/just-relax-data";
-
-const menuDuMoment = [
-  {
-    name: "Planche à partager Just Relax",
-    description:
-      "Sélection de tapas chauds et froids à partager : bouchées croustillantes, dips maison et petites salades.",
-    price: "29,00 €",
-  },
-  {
-    name: "Plat signature du chef",
-    description:
-      "Viande ou poisson du moment, accompagnement de saison et sauce travaillée, selon l’inspiration du chef.",
-    price: "24,00 €",
-  },
-  {
-    name: "Dessert gourmand à partager",
-    description:
-      "Assortiment de desserts maison pour finir le repas sur une note douce et conviviale.",
-    price: "18,00 €",
-  },
-];
-
-const avisClients = [
-  {
-    name: "Samir",
-    source: "Exemple d'avis Google",
-    text: "Super ambiance, cocktails très bien réalisés et équipe aux petits soins. On a passé une excellente soirée.",
-  },
-  {
-    name: "Mélanie",
-    source: "Exemple d'avis Google",
-    text: "Terrasse agréable, chicha de qualité et carte variée. Parfait pour un anniversaire ou une soirée entre amis.",
-  },
-  {
-    name: "Thomas",
-    source: "Exemple d'avis Google",
-    text: "Service rapide, musique au bon volume et déco soignée. Une belle découverte à Pantin.",
-  },
-];
+import {
+  menuDuMomentItems,
+  avisClientsExemples,
+} from "@/lib/home-content";
 
 export default function Home() {
   return (
@@ -64,7 +29,7 @@ export default function Home() {
         }}
       >
         <div className="grid gap-6 md:grid-cols-3">
-          {menuDuMoment.map((item) => (
+          {menuDuMomentItems.map((item) => (
             <div
               key={item.name}
               className="flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent p-5 shadow-lg shadow-black/40"
@@ -184,7 +149,7 @@ export default function Home() {
         }}
       >
         <div className="grid gap-6 md:grid-cols-3">
-          {avisClients.map((review) => (
+          {avisClientsExemples.map((review) => (
             <figure
               key={review.name}
               className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"

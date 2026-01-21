@@ -1,7 +1,11 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import MenuItemCard from "@/components/MenuItemCard";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { pageSeo } from "@/lib/page-seo";
+
+export const metadata: Metadata = pageSeo.menu;
 
 const digitalMenu = [
   {

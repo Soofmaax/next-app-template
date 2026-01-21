@@ -1,6 +1,10 @@
+import type { Metadata } from "next";
 import Section from "@/components/Section";
 import CTAButtons from "@/components/CTAButtons";
 import { justRelaxData } from "@/lib/just-relax-data";
+import { pageSeo } from "@/lib/page-seo";
+
+export const metadata: Metadata = pageSeo.contact;
 
 export default function ContactPage() {
   const phoneHref = justRelaxData.contact.phoneMain
