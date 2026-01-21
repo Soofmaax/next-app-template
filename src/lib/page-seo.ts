@@ -27,4 +27,9 @@ export const pageSeo = {
     description:
       "Mentions légales et informations réglementaires concernant le site vitrine du restaurant & lounge Just Relax à Pantin (93500).",
   } as Metadata,
+  evenements: {
+    title: `Privatisation & événements – ${justRelaxData.name} à Pantin`,
+    description:
+      "Privatisation de restaurant avec terrasse à Pantin (93500) pour anniversaires, afterworks, soirées d’entreprise et événements privés. Devis sur mesure et accueil jusqu’à 2h du matin.",
+  } as Metadata,
 };
