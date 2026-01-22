@@ -24,6 +24,11 @@ export default function EvenementsPage() {
         "Oui, nous pouvons prévoir des menus fixes, des formules groupe ou un cocktail dînatoire sur mesure, en fonction de votre budget et de l’occasion.",
     },
     {
+      question: "Organisez-vous des afterworks d’entreprise à Pantin ?",
+      answer:
+        "Oui, Just Relax accueille régulièrement des afterworks et soirées d’entreprise à Pantin. Nous adaptons les horaires, la configuration des tables et les formules (dinatoire, boissons, chichas) en fonction de vos besoins.",
+    },
+    {
       question: "Jusqu’à quelle heure peut-on rester pour un événement ?",
       answer:
         "Le restaurant est ouvert 7j/7 jusqu’à 2h du matin. Les horaires précis de votre événement seront définis ensemble lors de la réservation.",
@@ -33,7 +38,7 @@ export default function EvenementsPage() {
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 pb-16 pt-8 sm:px-6 sm:pb-24 sm:pt-10">
       <Section
-        title="Privatisation & événements privés"
+        title="Privatisation & événements privés à Pantin"
         eyebrow="Événements · Afterworks · Réceptions"
         background="subtle"
       >
