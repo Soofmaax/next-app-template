@@ -143,6 +143,56 @@ export default function Home() {
         </div>
       </Section>
 
+      {justRelaxData.delivery.deliveroo || justRelaxData.delivery.uberEats ? (
+        <Section
+          id="livraison"
+          title="Commander en livraison"
+          eyebrow="Nous sommes sur Deliveroo et Uber Eats"
+          background="subtle"
+        >
+          <div className="grid gap-6 md:grid-cols-2">
+            {justRelaxData.delivery.deliveroo && (
+              <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+                <h3 className="text-sm font-semibold text-slate-50">
+                  Nous sommes sur Deliveroo !
+                </h3>
+                <p className="mt-2 text-sm text-slate-200/90">
+                  Passez vos commandes sur Deliveroo et profitez de vos plats
+                  Just Relax à domicile ou au bureau.
+                </p>
+                <a
+                  href={justRelaxData.delivery.deliveroo}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex items-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                >
+                  Commander sur Deliveroo
+                </a>
+              </div>
+            )}
+            {justRelaxData.delivery.uberEats && (
+              <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+                <h3 className="text-sm font-semibold text-slate-50">
+                  Nous sommes sur Uber Eats !
+                </h3>
+                <p className="mt-2 text-sm text-slate-200/90">
+                  Passez vos commandes sur Uber Eats pour retrouver les plats
+                  Just Relax chez vous, 7j/7.
+                </p>
+                <a
+                  href={justRelaxData.delivery.uberEats}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-4 inline-flex items-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                >
+                  Commander sur Uber Eats
+                </a>
+              </div>
+            )}
+          </div>
+        </Section>
+      ) : null}
+
       <Section
         id="reviews"
         title="Ils ont passé une excellente soirée"
@@ -203,6 +253,41 @@ export default function Home() {
                 "Restaurant & lounge à Pantin avec terrasse privée, chicha et cocktails."}
             </p>
             <CTAButtons data={justRelaxData} layout="stacked" />
+          </div>
+        </div>
+      </Section>
+
+      <Section
+        id="services"
+        title="Nos services &amp; moyens de paiement"
+        eyebrow="Sur place, à emporter &amp; événements"
+        background="subtle"
+      >
+        <div className="grid gap-8 md:grid-cols-2">
+          <div>
+            <h3 className="text-sm font-semibold text-amber-300">
+              Nos services
+            </h3>
+            <ul className="mt-3 space-y-1.5 text-sm text-slate-100/90">
+              {justRelaxData.services.map((service) => (
+                <li key={service}>• {service}</li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-sm font-semibold text-amber-300">
+              Moyens de paiement disponibles
+            </h3>
+            <ul className="mt-3 flex flex-wrap gap-2 text-xs text-slate-100/90">
+              {justRelaxData.paymentMethods.map((method) => (
+                <li
+                  key={method}
+                  className="rounded-full border border-white/15 bg-black/40 px-3 py-1"
+                >
+                  {method}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </Section>

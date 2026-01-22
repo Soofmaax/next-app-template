@@ -167,7 +167,13 @@ export default function RootLayout({
                   href="/menu"
                   className="text-slate-200 transition-colors hover:text-amber-300"
                 >
-                  Menu
+                  Notre menu
+                </Link>
+                <Link
+                  href="/menu#reserve"
+                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+                >
+                  Faire une réservation
                 </Link>
                 <Link
                   href="/galerie"
@@ -191,7 +197,7 @@ export default function RootLayout({
                   href="/contact"
                   className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
                 >
-                  Contact
+                  Nous contacter
                 </Link>
                 <div className="flex items-center gap-2">
                   <a
