@@ -5,6 +5,7 @@ import "./globals.css";
 import { justRelaxData } from "@/lib/just-relax-data";
 import { SITE_URL, defaultLocale } from "@/lib/seo";
 import { getReservationInfo } from "@/lib/reservation";
+import SocialLinks from "@/components/SocialLinks";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -270,6 +271,7 @@ export default function RootLayout({
                     ))}
                   </div>
                 )}
+                <SocialLinks social={justRelaxData.social} demo />
               </div>
               <div className="flex flex-col gap-2 text-xs text-slate-400 sm:text-right">
                 <p>

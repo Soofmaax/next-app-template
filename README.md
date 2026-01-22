@@ -264,13 +264,40 @@ Les composants principaux sont dans `src/components/` :
 - `GalleryGrid.tsx` – grille de photos à partir de `gallery`.
 - `MenuItemCard.tsx` – rendu d’un plat/entrée/dessert.
 - `MapEmbed.tsx` – intégration de la carte Google.
+- `SocialLinks.tsx` – rendu des liens sociaux (Facebook, Instagram, TikTok) en mode **démo** ou **production**.
 
 > ✅ Modifier ces composants change **le design global**.  
 > ✅ Modifier les fichiers `lib/` change plutôt **le contenu et la logique métier**.
 
 ---
 
-## 8. Variables d’environnement
+## 8. Réseaux sociaux (Instagram & co.)
+
+**Données :** `social` dans `data/just-relax.json` :
+
+```jsonc
+"social": {
+  "facebook": "",
+  "instagram": "",
+  "tiktok": ""
+}
+```
+
+**Composant :** `src/components/SocialLinks.tsx`, utilisé dans le footer (`layout.tsx`) :
+
+- En **mode démo** (`<SocialLinks social={justRelaxData.social} demo />`) :
+  - Affiche des pastilles “Instagram (démo)”, “Facebook (démo)”, “TikTok (démo)” sans lien réel.
+  - Un texte indique que les liens officiels seront ajoutés plus tard.
+- En **mode production** (si `demo` est `false`) :
+  - Affiche uniquement les réseaux dont l’URL est renseignée.
+  - Chaque pastille est cliquable et ouvre le réseau social correspondant dans un nouvel onglet.
+
+> ✅ Pour activer les vrais liens, il suffit de remplir les champs dans `data/just-relax.json` (`social.instagram`, etc.).  
+> ✅ Le JSON-LD ne déclarera ces liens (`sameAs`) que s’ils ne sont pas vides.
+
+---
+
+## 9. Variables d’environnement
 
 **Fichier :** `src/lib/seo.ts`
 
