@@ -37,9 +37,9 @@ export default function MenuPage() {
               className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-md shadow-black/40"
             >
               <div>
-                <h2 className="text-base font-semibold text-slate-50">
+                <h3 className="text-base font-semibold text-slate-50">
                   {menu.name}
-                </h2>
+                </h3>
                 {menu.description && (
                   <p className="mt-2 text-xs text-slate-300">
                     {menu.description}

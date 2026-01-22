@@ -96,11 +96,11 @@ export default function Home() {
 
       <Section
         id="menu"
-        title="Notre carte"
+        title="Notre carte au Just Relax"
         eyebrow="Just Menu, Just Boisson, Just Chicha"
         background="subtle"
         cta={{
-          label: "Voir tout le menu",
+          label: "Voir la carte complète",
           href: "/menu",
         }}
       >
@@ -236,7 +236,7 @@ export default function Home() {
       <Section
         id="hours"
         title="Horaires &amp; informations pratiques"
-        eyebrow="Accès &amp; horaires"
+        eyebrow="Accès &amp; horaires du restaurant à Pantin"
         background="subtle"
       >
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)]">
