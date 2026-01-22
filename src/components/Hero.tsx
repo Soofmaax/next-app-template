@@ -14,7 +14,7 @@ export default function Hero({ data }: HeroProps) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.08),_transparent_50%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9),_transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="sakura-petals">
-          {Array.from({ length: 12 }).map((_, idx) => (
+          {Array.from({ length: 6 }).map((_, idx) => (
             <span key={idx} className="sakura-petal" />
           ))}
         </div>
