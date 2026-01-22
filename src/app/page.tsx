@@ -39,7 +39,7 @@ export default function Home() {
           {menuDuMomentItems.map((item) => (
             <div
               key={item.name}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent p-5 shadow-lg shadow-black/40"
+              className="card-elevated flex flex-col justify-between rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 via-white/5 to-transparent p-5 shadow-lg shadow-black/40"
             >
               <div>
                 <h3 className="text-sm font-semibold text-slate-50">
@@ -63,7 +63,7 @@ export default function Home() {
         eyebrow="Just Relax – Restaurant & Lounge"
       >
         <div className="grid gap-8 md:grid-cols-3">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
+          <div className="card-elevated rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
             <h3 className="text-sm font-semibold text-amber-300">
               Cuisine &amp; cocktails
             </h3>
@@ -73,7 +73,7 @@ export default function Home() {
               afterworks.
             </p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
+          <div className="card-elevated rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
             <h3 className="text-sm font-semibold text-amber-300">
               Terrasse &amp; lounge
             </h3>
@@ -82,7 +82,7 @@ export default function Home() {
               profiter de la chicha et des cocktails jusqu&apos;à 2h du matin.
             </p>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
+          <div className="card-elevated rounded-3xl border border-white/10 bg-gradient-to-b from-white/5 to-white/0 p-5 shadow-lg shadow-black/40">
             <h3 className="text-sm font-semibold text-amber-300">
               Services premium
             </h3>
@@ -108,7 +108,7 @@ export default function Home() {
           {justRelaxData.menus.map((menu) => (
             <div
               key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
+              className="card-elevated flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
             >
               <div>
                 <h3 className="text-sm font-semibold text-slate-50">
@@ -152,7 +152,7 @@ export default function Home() {
         >
           <div className="grid gap-6 md:grid-cols-2">
             {justRelaxData.delivery.deliveroo && (
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+              <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
                 <h3 className="text-sm font-semibold text-slate-50">
                   Nous sommes sur Deliveroo !
                 </h3>
@@ -171,7 +171,7 @@ export default function Home() {
               </div>
             )}
             {justRelaxData.delivery.uberEats && (
-              <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+              <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
                 <h3 className="text-sm font-semibold text-slate-50">
                   Nous sommes sur Uber Eats !
                 </h3>
@@ -209,7 +209,7 @@ export default function Home() {
           {avisClientsExemples.map((review) => (
             <figure
               key={review.name}
-              className="flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
+              className="card-elevated flex h-full flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40"
             >
               <div>
                 <div className="flex items-center gap-1 text-[11px] text-amber-300">

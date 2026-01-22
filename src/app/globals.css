@@ -112,3 +112,57 @@ body {
     opacity: 0;
   }
 }
+
+/* Effet parallax/tilt léger sur le visuel du hero */
+
+.hero-shell {
+  perspective: 1400px;
+}
+
+.hero-visual {
+  will-change: transform;
+  transition:
+    transform 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 800ms ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-shell:hover .hero-visual {
+    transform: translate3d(0, -6px, 0) scale(1.02);
+    box-shadow: 0 45px 90px rgba(0, 0, 0, 0.85);
+    border-color: rgba(252, 211, 77, 0.5);
+  }
+
+  .hero-visual {
+    animation: hero-float 20s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes hero-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1.01);
+  }
+  100% {
+    transform: translate3d(0, -4px, 0) scale(1.03);
+  }
+}
+
+/* Cartes surélevées avec micro-animations premium */
+
+.card-elevated {
+  transition:
+    transform 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 280ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 280ms ease-out,
+    background-color 280ms ease-out;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .card-elevated:hover {
+    transform: translate3d(0, -4px, 0);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    border-color: rgba(252, 211, 77, 0.45);
+    background-color: rgba(15, 23, 42, 0.9);
+  }
+}

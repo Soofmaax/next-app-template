@@ -10,7 +10,7 @@ export default function Hero({ data }: HeroProps) {
   const heroImage = data.heroImage || data.gallery[0]?.images[0]?.url;
 
   return (
-    <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-8 shadow-[0_40px_80px_rgba(0,0,0,0.85)] sm:px-8 sm:py-10">
+    <section className="hero-shell relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-8 shadow-[0_40px_80px_rgba(0,0,0,0.85)] sm:px-8 sm:py-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.08),_transparent_50%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9),_transparent_60%)]" />
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <div className="sakura-petals">
@@ -80,7 +80,7 @@ export default function Hero({ data }: HeroProps) {
 
         <div className="relative">
           <div className="absolute -inset-10 rounded-[3rem] bg-amber-400/10 blur-3xl" />
-          <div className="relative overflow-hidden rounded-[2.25rem] border border-white/15 bg-black/40 shadow-2xl shadow-black/80">
+          <div className="hero-visual relative overflow-hidden rounded-[2.25rem] border border-white/15 bg-black/40 shadow-2xl shadow-black/80">
             {heroImage ? (
               <Image
                 src={heroImage}
