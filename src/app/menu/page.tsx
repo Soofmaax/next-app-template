@@ -13,6 +13,11 @@ export default function MenuPage() {
     justRelaxData.menus.find((menu) => menu.id === "just-menu") ||
     justRelaxData.menus[0];
 
+  const categoryLinks = digitalMenuCategories.map((category) => ({
+    id: category.id,
+    name: category.name,
+  }));
+
   return (
     <div className="mx-auto flex max-w-6xl flex-col gap-10 pb-16 pt-6 sm:pb-24 sm:pt-4">
       <Section
@@ -72,9 +77,25 @@ export default function MenuPage() {
             : undefined
         }
       >
-        <div className="grid gap-8 md:grid-cols-3">
-          {digitalMenu.map((category) => (
-            <section key={category.id} className="space-y-4">
+        <div className="mb-5 flex snap-x gap-2 overflow-x-auto pb-1 text-xs text-slate-100/90">
+          {categoryLinks.map((category) => (
+            <a
+              key={category.id}
+              href={`#${category.id}`}
+              className="snap-start rounded-full border border-white/20 bg-black/40 px-3 py-1 font-medium transition hover:border-amber-300/80 hover:text-amber-200"
+            >
+              {category.name}
+            </a>
+          ))}
+        </div>
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {digitalMenuCategories.map((category) => (
+            <section
+              key={category.id}
+              id={category.id}
+              className="space-y-4"
+              aria-label={category.name}
+            >
               <div>
                 <h3 className="text-sm font-semibold text-slate-50">
                   {category.name}
