@@ -26,7 +26,7 @@ export default function CTAButtons({
   const reservation = getReservationInfo(data.contact);
 
   const baseClass =
-    "inline-flex items-center justify-center rounded-full text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
+    "inline-flex items-center justify-center rounded-full text-xs font-semibold text-center whitespace-normal transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950";
 
   const primaryClass =
     "bg-amber-400 px-4 py-2 text-slate-950 shadow-sm ring-1 ring-amber-300/70 hover:bg-amber-300 hover:ring-amber-200";
@@ -46,15 +46,15 @@ export default function CTAButtons({
           href={reservation.href}
           target={reservation.target}
           rel={reservation.rel}
-          className={`${baseClass} ${primaryClass} text-sm sm:text-base px-6 py-2.5`}
+          className={`${baseClass} ${primaryClass} w-full px-4 py-2 text-sm sm:w-auto sm:px-6 sm:py-2.5 sm:text-base`}
         >
           {reservation.label}
         </a>
         <a
           href={phoneHref}
-          className={`${baseClass} ${secondaryClass} text-sm sm:text-base px-6 py-2.5`}
+          className={`${baseClass} ${secondaryClass} w-full px-4 py-2 text-sm sm:w-auto sm:px-6 sm:py-2.5 sm:text-base`}
         >
-          Appeler
+          Appeler le restaurant
         </a>
       </div>
     );

@@ -126,14 +126,14 @@ export default function Home() {
                     href={menu.pdfUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center rounded-full bg-amber-400 px-3 py-1.5 font-semibold text-slate-900 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                    className="inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-3 py-1.5 text-center text-xs font-semibold text-slate-900 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:w-auto"
                   >
                     Ouvrir le menu PDF
                   </a>
                 )}
                 <a
                   href="/menu"
-                  className="inline-flex items-center rounded-full border border-white/20 px-3 py-1.5 font-medium text-slate-100/90 transition hover:border-amber-300/80 hover:text-amber-200"
+                  className="inline-flex w-full items-center justify-center rounded-full border border-white/20 px-3 py-1.5 text-center text-xs font-medium text-slate-100/90 transition hover:border-amber-300/80 hover:text-amber-200 sm:w-auto"
                 >
                   Voir en détail
                 </a>
@@ -164,7 +164,7 @@ export default function Home() {
                   href={justRelaxData.delivery.deliveroo}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4 inline-flex items-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-4 py-2 text-center text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:w-auto"
                 >
                   Commander sur Deliveroo
                 </a>
@@ -183,7 +183,7 @@ export default function Home() {
                   href={justRelaxData.delivery.uberEats}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-4 inline-flex items-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
+                  className="mt-4 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-4 py-2 text-center text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200 sm:w-auto"
                 >
                   Commander sur Uber Eats
                 </a>
