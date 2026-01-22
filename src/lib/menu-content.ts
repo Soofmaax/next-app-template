@@ -670,4 +670,112 @@ export const digitalMenuCategories: DigitalMenuCategory[] = [
       },
     ],
   },
+  {
+    id: "just-chicha",
+    name: "Just Chicha",
+    items: [
+      {
+        name: "Hawaï",
+        description: "Adalya / Al Fakher / Chaos · Ananas, menthe, mangue.",
+        price: "15,00 €",
+      },
+      {
+        name: "Love 66",
+        description: "Adalya / Al Fakher / Chaos · Menthe, melon, pastèque, passion.",
+        price: "15,00 €",
+      },
+      {
+        name: "Mi amor",
+        description: "Adalya / Al Fakher / Chaos · Banane, ananas, menthe.",
+        price: "15,00 €",
+      },
+      {
+        name: "Menthe",
+        description: "Adalya / Al Fakher / Chaos · Parfum menthe.",
+        price: "15,00 €",
+      },
+      {
+        name: "Double pomme",
+        description: "Adalya / Al Fakher / Chaos · Parfum double pomme.",
+        price: "15,00 €",
+      },
+      {
+        name: "Menthe sucrée",
+        description: "Adalya / Al Fakher / Chaos · Parfum menthe sucrée.",
+        price: "15,00 €",
+      },
+    ],
+  },
+  {
+    id: "formules-chicha",
+    name: "Formules chicha",
+    items: [
+      {
+        name: "Tête plate classique",
+        description:
+          "Tête plate avec une boisson soft au choix (hors Red Bull et cocktail). Têtes supplémentaires : 5 € (plate), 10 € (Quasar).",
+        price: "15,00 €",
+      },
+      {
+        name: "Tête Quasar classique",
+        description:
+          "Tête Quasar avec une boisson soft au choix (hors Red Bull et cocktail). Têtes supplémentaires : 5 € (plate), 10 € (Quasar).",
+        price: "20,00 €",
+      },
+      {
+        name: "Just pour vous mesdames – tête plate",
+        description:
+          "Tarif spécial pour mesdames : tête plate avec boisson soft au choix (hors Red Bull et cocktail).",
+        price: "10,00 €",
+      },
+      {
+        name: "Just pour vous mesdames – tête Quasar",
+        description:
+          "Tarif spécial pour mesdames : tête Quasar avec boisson soft au choix (hors Red Bull et cocktail).",
+        price: "15,00 €",
+      },
+      {
+        name: "Formule Quasar + dessert (dames)",
+        description:
+          "Une chicha Quasar et un dessert \"ptit plaisir\", accompagnés d’une boisson soft (hors Red Bull et cocktail).",
+        price: "20,00 €",
+      },
+      {
+        name: "Formule Quasar + Just plat (dames)",
+        description:
+          "Une chicha Quasar et un Just plat, accompagnés d’une boisson soft (hors Red Bull et cocktail).",
+        price: "30,00 €",
+      },
+      {
+        name: "Formule Quasar complète (dames)",
+        description:
+          "Une chicha Quasar, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+        price: "45,00 €",
+      },
+      {
+        name: "Formule tête plate + Just plat (messieurs)",
+        description:
+          "Une chicha tête plate et un Just plat, accompagnés d’une boisson soft (hors Red Bull et cocktail).",
+        price: "30,00 €",
+      },
+      {
+        name: "Formule Quasar + Just plat (messieurs)",
+        description:
+          "Une chicha Quasar et un Just plat, accompagnés d’une boisson soft (hors Red Bull et cocktail).",
+        price: "35,00 €",
+      },
+      {
+        name: "Formule tête plate complète (messieurs)",
+        description:
+          "Une chicha tête plate, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+        price: "45,00 €",
+      },
+      {
+        name: "Formule Quasar complète (messieurs)",
+        description:
+          "Une chicha Quasar, une entrée, un Just plat et un dessert \"ptit plaisir\", avec boisson soft (hors Red Bull et cocktail).",
+        price: "50,00 €",
+      },
+    ],
+  },
 ];
