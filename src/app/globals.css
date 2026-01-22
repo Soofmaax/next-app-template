@@ -18,6 +18,23 @@ body {
   font-family: var(--font-geist-sans, system-ui, -apple-system, sans-serif);
 }
 
+/* Transition douce pour l'entrée des pages */
+
+.page-shell {
+  animation: page-fade-in 600ms ease-out;
+}
+
+@keyframes page-fade-in {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 12px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 /* Sakura overlay for the hero (décor cerisier japonais, version premium) */
 
 .sakura-petals {

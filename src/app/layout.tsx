@@ -218,7 +218,7 @@ export default function RootLayout({
               </nav>
             </div>
           </header>
-          <main className="flex-1 px-2 py-4 sm:px-4 sm:py-6">
+          <main className="page-shell flex-1 px-2 py-4 sm:px-4 sm:py-6">
             {children}
           </main>
           <footer className="border-t border-white/10 bg-black/70">
