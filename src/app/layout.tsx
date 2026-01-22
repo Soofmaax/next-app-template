@@ -175,6 +175,12 @@ export default function RootLayout({
                   Galerie
                 </Link>
                 <Link
+                  href="/evenements"
+                  className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
+                >
+                  Événements
+                </Link>
+                <Link
                   href="/acces-horaires"
                   className="hidden text-slate-200 transition-colors hover:text-amber-300 sm:inline"
                 >

@@ -15,7 +15,14 @@ export default function Home() {
       <Hero data={justRelaxData} />
 
       <div className="rounded-full border border-amber-300/25 bg-gradient-to-r from-amber-400/20 via-amber-300/10 to-transparent px-4 py-2 text-center text-[11px] text-amber-100 shadow-sm shadow-black/40">
-        Événements privés, anniversaires &amp; afterworks sur demande. Contactez-nous pour privatiser tout ou partie du lieu.
+        Événements privés, anniversaires &amp; afterworks sur demande.{" "}
+        <a
+          href="/evenements"
+          className="font-semibold underline-offset-2 hover:underline"
+        >
+          Découvrir nos offres événements
+        </a>
+        .
       </div>
 
       <Section
