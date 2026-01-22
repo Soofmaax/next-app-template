@@ -12,7 +12,14 @@ export default function Hero({ data }: HeroProps) {
   return (
     <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 px-4 py-8 shadow-[0_40px_80px_rgba(0,0,0,0.85)] sm:px-8 sm:py-10">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.08),_transparent_50%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.9),_transparent_60%)]" />
-      <div className="relative grid gap-10 md:grid-cols-[minmax(0,1.05fr),minmax(0,0.95fr)] md:items-center">
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <div className="sakura-petals">
+          {Array.from({ length: 12 }).map((_, idx) => (
+            <span key={idx} className="sakura-petal" />
+          ))}
+        </div>
+      </div>
+      <div className="relative z-10 grid gap-10 md:grid-cols-[minmax(0,1.05fr),minmax(0,0.95fr)] md:items-center">
         <div className="space-y-6">
           <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.18em] text-amber-200">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_0_4px_rgba(16,185,129,0.35)]" />

@@ -37,7 +37,7 @@ export default function CTAButtons({
   const layoutClass =
     layout === "stacked"
       ? "flex flex-col gap-3"
-      : "flex flex-wrap gap-3 items-center";
+      : "flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center";
 
   if (context === "hero") {
     return (
@@ -66,23 +66,29 @@ export default function CTAButtons({
         href={reservation.href}
         target={reservation.target}
         rel={reservation.rel}
-        className={`${baseClass} ${primaryClass}`}
+        className={`${baseClass} ${primaryClass} w-full px-4 py-2 sm:w-auto`}
       >
         {reservation.label}
       </a>
-      <a href={phoneHref} className={`${baseClass} ${secondaryClass}`}>
-        Appeler
+      <a
+        href={phoneHref}
+        className={`${baseClass} ${secondaryClass} w-full px-4 py-2 sm:w-auto`}
+      >
+        Appeler le restaurant
       </a>
       <a
         href={mapHref}
         target="_blank"
         rel="noreferrer"
-        className={`${baseClass} ${secondaryClass}`}
+        className={`${baseClass} ${secondaryClass} w-full px-4 py-2 sm:w-auto`}
       >
-        Itinéraire
+        Itinéraire Google Maps
       </a>
-      <a href="/menu" className={`${baseClass} ${secondaryClass}`}>
-        Voir le menu
+      <a
+        href="/menu"
+        className={`${baseClass} ${secondaryClass} w-full px-4 py-2 sm:w-auto`}
+      >
+        Voir la carte complète
       </a>
     </div>
   );
