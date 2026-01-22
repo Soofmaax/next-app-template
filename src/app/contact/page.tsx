@@ -81,9 +81,9 @@ export default function ContactPage() {
               Formulaire de contact
             </h2>
             <p className="mt-1 text-[11px] text-slate-400">
-              Ce formulaire est actuellement présenté à titre d&apos;exemple.
-              Il pourra être connecté à votre solution d&apos;envoi (Formspree,
-              API maison, etc.) lors de la mise en production.
+              Merci de renseigner vos coordonnées et l&apos;objet de votre demande.
+              Nous reviendrons vers vous dans les meilleurs délais pour confirmer
+              votre réservation ou vous apporter une réponse personnalisée.
             </p>
             <form className="mt-4 space-y-3 text-sm">
               <div>
@@ -140,7 +140,7 @@ export default function ContactPage() {
                 type="button"
                 className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-amber-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-sm ring-1 ring-amber-300/70 transition hover:bg-amber-300 hover:ring-amber-200"
               >
-                Envoyer (démonstration)
+                Envoyer
               </button>
             </form>
           </div>

@@ -264,7 +264,7 @@ Les composants principaux sont dans `src/components/` :
 - `GalleryGrid.tsx` – grille de photos à partir de `gallery`.
 - `MenuItemCard.tsx` – rendu d’un plat/entrée/dessert.
 - `MapEmbed.tsx` – intégration de la carte Google.
-- `SocialLinks.tsx` – rendu des liens sociaux (Facebook, Instagram, TikTok) en mode **démo** ou **production**.
+- `SocialLinks.tsx` – rendu des liens sociaux (Facebook, Instagram, TikTok) en mode **préproduction** ou **production**.
 
 > ✅ Modifier ces composants change **le design global**.  
 > ✅ Modifier les fichiers `lib/` change plutôt **le contenu et la logique métier**.
@@ -285,8 +285,8 @@ Les composants principaux sont dans `src/components/` :
 
 **Composant :** `src/components/SocialLinks.tsx`, utilisé dans le footer (`layout.tsx`) :
 
-- En **mode démo** (`<SocialLinks social={justRelaxData.social} demo />`) :
-  - Affiche des pastilles “Instagram (démo)”, “Facebook (démo)”, “TikTok (démo)” sans lien réel.
+- En **mode préproduction** (`<SocialLinks social={justRelaxData.social} demo />`) :
+  - Affiche des pastilles “Instagram”, “Facebook”, “TikTok” non cliquables tant que les URLs sont vides.
   - Un texte indique que les liens officiels seront ajoutés plus tard.
 - En **mode production** (si `demo` est `false`) :
   - Affiche uniquement les réseaux dont l’URL est renseignée.

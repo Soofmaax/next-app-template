@@ -89,10 +89,10 @@ export default function MentionsLegalesPage() {
                 Hébergement
               </h2>
               <p className="text-slate-300">
-                Ce site est une version de démonstration destinée à présenter le
-                futur projet au client. L&apos;hébergeur définitif (par exemple :
-                Vercel, OVH, Scaleway…) sera choisi et validé avec le client lors
-                de la mise en production.
+                Ce site est actuellement mis en ligne en environnement de
+                pré-production afin de présenter le projet au client. L&apos;hébergeur
+                définitif (par exemple&nbsp;: Vercel, OVH, Scaleway…) sera choisi et
+                validé avec le client lors de la mise en production.
               </p>
             </div>
           </div>
@@ -103,10 +103,10 @@ export default function MentionsLegalesPage() {
             </h2>
             <p>
               L&apos;ensemble des éléments graphiques, textes et visuels
-              présentés sur ce site de démonstration a pour objectif de mettre
-              en valeur l&apos;univers du restaurant. Les contenus définitifs
-              (photos, textes, logos) seront validés par le propriétaire du
-              restaurant avant la mise en ligne officielle.
+              présentés sur ce site a pour objectif de mettre en valeur
+              l&apos;univers du restaurant. Les contenus définitifs (photos,
+              textes, logos) pourront être ajustés et validés par le
+              propriétaire du restaurant avant la mise en ligne officielle.
             </p>
             <p>
               Toute reproduction ou utilisation non autorisée du design ou des
