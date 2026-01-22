@@ -18,7 +18,7 @@ export default function AccesHorairesPage() {
         eyebrow="Venir chez Just Relax"
       >
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.1fr),minmax(0,1fr)] md:items-start">
-          <div className="space-y-5 text-sm text-slate-100/90">
+          <div className="card-elevated space-y-5 rounded-3xl border border-white/10 bg-black/40 p-5 text-sm text-slate-100/90 shadow-lg shadow-black/40 sm:p-6">
             <p className="font-semibold text-slate-50">
               {justRelaxData.contact.address.line1}
               <br />
@@ -35,7 +35,7 @@ export default function AccesHorairesPage() {
               <CTAButtons data={justRelaxData} layout="stacked" />
             </div>
           </div>
-          <div>
+          <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-3 shadow-lg shadow-black/40 sm:p-4">
             <MapEmbed
               mapUrl={mapUrl}
               title={`Plan d'accès à ${justRelaxData.name}`}

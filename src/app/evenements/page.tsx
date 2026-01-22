@@ -66,7 +66,7 @@ export default function EvenementsPage() {
             </div>
           </div>
           <div className="space-y-4 text-sm text-slate-100/90">
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+            <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
               <h2 className="text-sm font-semibold text-amber-300">
                 Types d&apos;événements
               </h2>
@@ -78,7 +78,7 @@ export default function EvenementsPage() {
                 <li>• Privatisation partielle ou totale sur demande</li>
               </ul>
             </div>
-            <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
+            <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40">
               <h2 className="text-sm font-semibold text-amber-300">
                 Informations pratiques
               </h2>
@@ -108,21 +108,21 @@ export default function EvenementsPage() {
         eyebrow="FAQ événements"
         background="subtle"
       >
-        <div className="space-y-4 text-sm text-slate-100/90">
+       <<div className="space-y-4 text-sm text-slate-100/90">
           {faq.map((item) => (
-            <div
+           <<div
               key={item.question}
-              className="rounded-2xl border border-white/10 bg-black/40 p-4 text-sm shadow-md shadow-black/40"
+              className="card-elevated rounded-2xl border border-white/10 bg-black/40 p-4 text-sm shadow-md shadow-black/40"
             >
-              <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
+             <"h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-300">
                 {item.question}
-              </h3>
-              <p className="mt-2 text-xs text-slate-200">{item.answer}</p>
-            </div>
+            </  h3>
+             <mp className="mt-2 text-xs text-slate-200">{item.answ}</  p>
+          </  div>
           ))}
-          <p className="mt-3 text-[11px] text-slate-400">
+         <mp className="mt-3 text-[11px] text-slate-400">
             Pour toute demande spécifique (DJ, décoration, privatisation totale
-            en dehors des horaires habituels, etc.), n&apos;hésitez pas à nous
+            en dehors des horaires habituapos;hésitez pas à nous
             contacter : nous étudierons votre projet en détail.
           </p>
         </div>

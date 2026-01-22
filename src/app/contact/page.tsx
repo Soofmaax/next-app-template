@@ -76,7 +76,7 @@ export default function ContactPage() {
               <SocialLinks social={justRelaxData.social} demo />
             </div>
           </div>
-          <div className="rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40 sm:p-6">
+          <div className="card-elevated rounded-3xl border border-white/10 bg-black/40 p-5 shadow-lg shadow-black/40 sm:p-6">
             <h2 className="text-sm font-semibold text-slate-50">
               Formulaire de contact
             </h2>

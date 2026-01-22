@@ -34,7 +34,7 @@ export default function MenuPage() {
           {justRelaxData.menus.map((menu) => (
             <div
               key={menu.id}
-              className="flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-md shadow-black/40"
+              className="card-elevated flex flex-col justify-between rounded-3xl border border-white/10 bg-black/40 p-5 shadow-md shadow-black/40"
             >
               <div>
                 <h3 className="text-base font-semibold text-slate-50">
